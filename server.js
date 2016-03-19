@@ -19,39 +19,38 @@ app.get('/', function(req, res) {
   res.send(index.html);
 });
 
+//find one order
 app.get('/orders', function (req, res) {
-   Order.find(function(err, docs) {
-    if (err){
+  Order.findOne(function (err, docs) {
+    if (err) {
       console.log(err);
       res.send(err);
-    } else {
-      
-    }
-    }
-   })
-}
-app.get('/orders', function(req, res){
-//find all orders
-Order.find(function(err, docs) {
-  if (err) {
-    console.log(err);
-    res.send(err);
-  } else {
-
-  }
-  }
-})
-
-
+      } else {
+      res.send(doc);
+    }  
+  })
 });
+
+//find all orders
+app.get('/orders', function (req, res) {
+  Order.findAll(function (err, docs) {
+    if (err) {
+      console.log(err);
+      res.send(err);
+      } else {
+      res.send(doc);
+    }
+  })
+});
+
 //create a new order
 app.post('/neworder', function (req, res) {
   var newOrder = new Order (req.body);
-  newOrder.save(function (err, doc) {
+    newOrder.save(function (err, doc) {
      if (err) {
       console.log(err);
       res.send(err);
-    } else {
+      } else {
       res.send(doc);
     }
   })
