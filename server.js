@@ -44,22 +44,19 @@ Order.find(function(err, docs) {
 
 
 });
-
-app.post('/neworder', function(req, res){
-  var newOrder = new Order(req.body);
-  newOrder.save(fnction(err, doc){
+//create a new order
+app.post('/neworder', function (req, res) {
+  var newOrder = new Order (req.body);
+  newOrder.save(function (err, doc) {
      if (err) {
       console.log(err);
       res.send(err);
     } else {
       res.send(doc);
-     }
-    })
-  });
-//create a new order
-
-
+    }
+  })
 });
+
 
 
 var port = 3000;
