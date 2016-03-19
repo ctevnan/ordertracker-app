@@ -6,6 +6,7 @@ angular.module('orderApp', [])
       orderList.itemBoxCounter = 1;
 
       orderList.addOrder = function() {
+        console.log("adding order");
         var newOrder = {
 
           //Grab the recipe form data and complete this object to be submitted to the server
@@ -22,19 +23,26 @@ angular.module('orderApp', [])
 
           //push the result to the orderList.orders array
           //clear the form and reset the itemBoxCounter
+
         });
       };
 
       orderList.getOrders = function() {
+        console.log('trying to get orders');
         $http({
           method: 'GET',
           url: '/orders'
         }).then (function (result){
+
+          console.log("we got our orders");
+          console.log(result);
+          
           //loop over the results and push them to the orderList.orders array
-
-
+          angular.forEach(results.data, function(order) {
+            orderList.orders.push(order);
+            });
           });
-        };
+        
 
         orderList.addItemBox = function(){
           orderList.itemBoxes.push({
