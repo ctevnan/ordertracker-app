@@ -56,8 +56,6 @@ app.post('/neworder', function (req, res) {
   })
 });
 
-
-
 var port = 3000;
 app.listen(port, function() {
   console.log("listening on port:" + port);
