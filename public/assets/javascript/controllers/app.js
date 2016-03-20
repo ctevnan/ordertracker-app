@@ -1,14 +1,13 @@
 angular.module('orderApp', [])
-    .controller('OrderListController', function($http) {
-      var orderList = this;
-      orderList.orders = [];
-      orderList.itemBoxes = [];
-      orderList.itemBoxCounter = 1;
+  .controller('OrderListController', function($http) {
+    var orderList = this;
+    orderList.orders = [];
+    orderList.itemBoxes = [];
+    orderList.itemBoxCounter = 1;
 
-      orderList.addOrder = function() {
-        console.log("adding order");
-        var newOrder = {
-
+    orderList.addOrder = function() {
+      console.log("adding order");
+      var newOrder = {
           //Grab the recipe form data and complete this object to be submitted to the server
           //hint: check out the recipeList object
           address: orderList.address,
@@ -20,10 +19,13 @@ angular.module('orderApp', [])
           url:'/neworder',
           data: newOrder
         }).then(function (result){
-
+          orderlist.orders.push(result.data);
+          orderList.address = '';
+          orderList.notes = '';
+          orderList.itemBoxes = [];
+          orderList.itemBoxCounter = 1;
           //push the result to the orderList.orders array
           //clear the form and reset the itemBoxCounter
-
         });
       };
 
