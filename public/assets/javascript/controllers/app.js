@@ -42,15 +42,8 @@ angular.module('orderApp', [])
           });
         });
         };  
-    
           
-          //loop over the results and push them to the orderList.orders array
-          angular.forEach(results.data, function(order) {
-            orderList.orders.push(order);
-            });
-          });
-        
-
+        //loop over the results and push them to the orderList.orders array
         orderList.addItemBox = function(){
           orderList.itemBoxes.push({
             name:"item" + orderList.itemBoxCounter,
