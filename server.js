@@ -19,28 +19,16 @@ app.get('/', function(req, res) {
   res.send(index.html);
 });
 
-//find one order
-app.get('/orders', function (req, res) {
-  Order.findOne(function (err, docs) {
-    if (err) {
-      console.log(err);
-      res.send(err);
-      } else {
-      res.send(doc);
-    }  
-  })
-});
-
 //find all orders
 app.get('/orders', function (req, res) {
-  Order.findAll(function (err, docs) {
+  Order.find(function (err, docs) {
     if (err) {
       console.log(err);
       res.send(err);
       } else {
-      res.send(doc);
-    }
-  })
+      res.send(docs);
+    }  
+  });
 });
 
 //create a new order
