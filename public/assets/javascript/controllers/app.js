@@ -35,9 +35,14 @@ angular.module('orderApp', [])
           method: 'GET',
           url: '/orders'
         }).then (function (result){
-
-          console.log("we got our orders");
-          console.log(result);
+          angular.forEach(result.data, function (eachOne) {
+            orderList.order.push(eachOne);
+            console.log("we got our orders");
+            console.log(result);
+          });
+        });
+        };  
+    
           
           //loop over the results and push them to the orderList.orders array
           angular.forEach(results.data, function(order) {
