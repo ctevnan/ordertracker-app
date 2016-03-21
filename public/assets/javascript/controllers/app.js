@@ -30,28 +30,25 @@ angular.module('orderApp', [])
       };
 
       orderList.getOrders = function() {
-        console.log('trying to get orders');
         $http({
           method: 'GET',
           url: '/orders'
-        }).then (function (result){
+        }).then (function (result) {
           angular.forEach(result.data, function (eachOne) {
             orderList.order.push(eachOne);
-            console.log("we got our orders");
-            console.log(result);
           });
         });
-        };  
+      };  
           
-        //loop over the results and push them to the orderList.orders array
-        orderList.addItemBox = function(){
-          orderList.itemBoxes.push({
-            name:"item" + orderList.itemBoxCounter,
-            placeholder: "Item #" +orderList.itemBoxCounter
-          });
-          orderList.itemBoxCounter++;
-        };
+    //loop over the results and push them to the orderList.orders array
+    orderList.addItemBox = function() {
+      orderList.itemBoxes.push({
+        name:"item" + orderList.itemBoxCounter,
+        placeholder: "Item #" +orderList.itemBoxCounter
+      });
+      orderList.itemBoxCounter++;
+    };
 
 
-      orderList.getOrders();
-    });
+   orderList.getOrders();
+  });
